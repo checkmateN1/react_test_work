@@ -1,0 +1,28 @@
+@import '../../sass/variables';
+
+.user {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 200px;
+  margin: 0 auto;
+
+  img {
+    width: 70%;
+    border-radius: 100%;
+  }
+
+  h5 {
+    margin: 15px 0 10px 0;
+  }
+
+  p {
+    font-family: "Open Sans", "Arial", sans-serif;
+    font-size: calc(10px + 0.3vw);
+    color: $mint-darker;
+    line-height: calc(10px + 0.3vw);
+    margin: 5px 0;
+  }
+}

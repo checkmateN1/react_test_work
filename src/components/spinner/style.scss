@@ -1,0 +1,23 @@
+@import '../../sass/variables';
+
+@keyframes spinner {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #ddd;
+    border-top: 4px solid $black;
+    border-radius: 100%;
+    bottom: 20px;
+    right: 20px;
+    margin: auto;
+    animation: spinner 1s infinite linear;
+}
