@@ -3,4 +3,25 @@
 .users {
   max-width: $max-page-width;
   margin: 0 auto;
+
+  &-wrapper > div {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .show-more-btn {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .users-wrapper {
+
+    > div {
+      flex-direction: column;
+    }
+  }
 }

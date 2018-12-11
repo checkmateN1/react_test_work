@@ -1,9 +1,15 @@
+@import './variables';
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Open Sans", "Arial", sans-serif;
   margin: 0;
   padding: 0;
   cursor: default;
   user-select: none;
-  //overflow: hidden;
+  min-width: $min-page-width;
 }
 

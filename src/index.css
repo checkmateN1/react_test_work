@@ -1,22 +1,29 @@
+* {
+  box-sizing: border-box; }
+
 body {
   font-family: "Open Sans", "Arial", sans-serif;
   margin: 0;
   padding: 0;
   cursor: default;
-  user-select: none; }
+  user-select: none;
+  min-width: 320px; }
 
 .page-header {
   background-color: #56c3b2;
+  position: fixed;
   font-size: calc(12px + 0.5vmin);
   color: #000000;
-  border: 1px solid deeppink;
-  max-width: 1200px;
-  margin: 0 auto; }
+  width: 100%;
+  margin: 0 auto;
+  top: 0;
+  z-index: 5; }
   .page-header nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0;
+    max-width: 1170px;
+    margin: 0 auto;
     padding: 0;
     min-height: 50px; }
     .page-header nav .menu-mobile {
@@ -46,7 +53,7 @@ body {
       .page-header nav ul li:nth-last-child(2) {
         margin-left: auto;
         margin-right: 0; }
-  @media (max-width: 630px) {
+  @media (max-width: 720px) {
     .page-header nav {
       flex-direction: column;
       align-items: flex-start;

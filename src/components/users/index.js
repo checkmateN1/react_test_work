@@ -3,76 +3,45 @@ import React, { Component } from 'react';
 import FlipMove from "react-flip-move";
 
 // Components
-import { url } from '../../config/api';
+import User from "../user";
 
 // Instruments
 import './style.scss';
-import User from "../user";
+
 
 class Users extends Component {
 
   state = {
-    users: [],
+    usersCount: 6,
   };
 
-  // async componentDidMount() {
-  //   try {
-  //     const response = await fetch(url + 'token');
-  //     if (!response.ok) {
-  //       throw Error(response.statusText);
-  //     }
-  //     const { token } = await response.json();
-  //     this.setState({ token });
-  //
-  //     this.getUsers(6);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  showMoreUsers = () => {
 
-  
-
-  async getUsers(count) {
-    try {
-      const response = await fetch(url + `users?page=1&count=${count}`);
-    if (!response.ok) {
-      throw Error(response.statusText);
-    }
-    const { users } = await response.json();
-    //console.log(data);
-    this.setState({ users });
-
-    } catch (error) {
-      console.log(error);
-    }
   };
-
-  async getPositions() {
-    try {
-      const response = await fetch(url + ``);
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-      const { users } = await response.json();
-      //console.log(data);
-      this.setState({ users });
-
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-
 
   render() {
+    const { users } = this.props;
+
+    const usersList = users.map( user => (
+        <User
+            name={ user.name }
+            specialization={ user.position }
+            key={user.id}
+            email={user.email}
+            phone={user.phone}
+            //photo={user.photo}
+        />
+    )).slice(0, this.state.usersCount);
+
     return (
         <section className="users">
           <h3>cheerful users</h3>
-          <FlipMove>
-            {/*{arrUsers}*/}
-            <User />
-          </FlipMove>
-
+          <div className={'users-wrapper'}>
+            <FlipMove>
+              {usersList}
+            </FlipMove>
+          </div>
+          <button className='show-more-btn' onClick={this.showMoreUsers}>Show more</button>
         </section>
     );
   }

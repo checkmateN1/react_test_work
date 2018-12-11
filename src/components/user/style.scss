@@ -2,16 +2,28 @@
 
 .user {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  max-width: 200px;
+  align-items: flex-start;
+  width: 33%;
   margin: 0 auto;
+  overflow: hidden;
+  box-sizing: border-box;
 
-  img {
+  & > div {
+    box-sizing: border-box;
+  }
+
+  .avatar {
+    width: 30%;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  .data {
     width: 70%;
-    border-radius: 100%;
   }
 
   h5 {
@@ -21,8 +33,38 @@
   p {
     font-family: "Open Sans", "Arial", sans-serif;
     font-size: calc(10px + 0.3vw);
+    text-align: left;
     color: $mint-darker;
     line-height: calc(10px + 0.3vw);
     margin: 5px 0;
+  }
+}
+
+@media (max-width: $tablet-width) {
+  .user {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .avatar {
+      width: 150px;
+      text-align: center;
+    }
+
+    .data {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h5, p {
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .user {
+    width: 100%;
   }
 }

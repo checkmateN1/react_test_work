@@ -3,20 +3,24 @@ import React, { Component } from 'react';
 
 // Instruments
 import './style.scss';
-//import Man from '../../img/users/man-1.jpg'
+
 
 class User extends Component {
 
   render() {
-    const { name, specialization, email, phone, img } = this.props;
+    const { name, specialization, email, phone, photo } = this.props;
 
     return (
-      <div className={'user'}>
-        <img src={ img } alt={ name }/>
-        <h5>{ name }</h5>
-        <p>{ specialization }</p>
-        <p>{ email }</p>
-        <p>{ phone }</p>
+      <div className='user'>
+        <div className='avatar'>
+          <img src={ photo } alt={ name }/>
+        </div>
+        <div className='data'>
+          <h5>{ name }</h5>
+          <p>{ specialization }</p>
+          <p>{ email }</p>
+          <p>{ phone }</p>
+        </div>
       </div>
     );
   }
