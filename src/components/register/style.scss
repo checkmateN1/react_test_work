@@ -36,33 +36,12 @@
   select {
     width: 50%;
   }
-
-  .upload-wrapper {
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-
-    input[type="file"] {
-      display: none;
-    }
-
-    .custom-file-upload {
-      display: inline-block;
-      margin-left: 20px;
-      flex-grow: 1;
-      border: 1px solid #ccc;
-      padding: 6px 12px;
-      cursor: pointer;
-      font-size: 12px;
-    }
-  }
 }
 
 @media (max-width: $mobile-width) {
   .register-form {
 
-   > div {
+    > div {
       flex-direction: column;
     }
 
@@ -77,20 +56,6 @@
     select {
       width: 100%;
       padding-left: 8px;
-    }
-
-    .upload-wrapper {
-      width: 100%;
-      flex-wrap: nowrap;
-
-      .custom-file-upload {
-        margin-left: 0;
-        box-sizing: border-box;
-      }
-      button {
-        width: 20%;
-        box-sizing: border-box;
-      }
     }
   }
 }

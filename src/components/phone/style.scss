@@ -1,0 +1,31 @@
+@import '../../sass/variables';
+
+fieldset.phone {
+  position: relative;
+
+  input {
+    color: #5d5d5d;
+  }
+
+  input:focus,
+  input.filled {
+    color: black;
+  }
+
+  #spot {
+    width: 10px;
+    height: 16px;
+    background: white;
+    position: absolute;
+    left: 120px;
+    top: 18px;
+    z-index: 10;
+  }
+
+  @media (max-width: $mobile-width) {
+    #spot {
+      top: 17px;
+    }
+  }
+}
+
