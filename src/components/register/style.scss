@@ -10,11 +10,17 @@
     flex-wrap: nowrap;
   }
 
+  .register-sign-up {
+    justify-content: center;
+  }
+
   fieldset {
     margin: 0;
     width: 33%;
     box-sizing: border-box;
     min-width: 100px;
+    border-radius: 4px;
+    border: 1px solid grey;
 
     legend {
       font-size: 12px;
@@ -36,6 +42,7 @@
   select {
     width: 50%;
   }
+
 }
 
 @media (max-width: $mobile-width) {

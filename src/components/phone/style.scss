@@ -4,28 +4,25 @@ fieldset.phone {
   position: relative;
 
   input {
-    color: #5d5d5d;
-  }
-
-  input:focus,
-  input.filled {
     color: black;
   }
 
-  #spot {
-    width: 10px;
-    height: 16px;
-    background: white;
-    position: absolute;
-    left: 120px;
-    top: 18px;
-    z-index: 10;
+  input:not(:focus) {
+    color: #575757;
   }
 
-  @media (max-width: $mobile-width) {
-    #spot {
-      top: 17px;
+  input.hide-cursor {
+    color: transparent;
+    text-shadow: 0 0 0 black;
+
+    &:focus {
+      outline: none;
     }
+  }
+
+  input.filled:not(:focus) {
+    color: black;
+    text-shadow: none;
   }
 }
 

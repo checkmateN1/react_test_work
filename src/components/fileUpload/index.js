@@ -8,51 +8,46 @@ import './style.scss';
 class FileUpload extends Component {
 
   state = {
-    selectedFile: '',
     fileName: 'Upload your photo',
     imgSrc: '',
   };
 
   fileSelectedHandler = event => {
+    // check size
     let input = event.target;
 
     if (input.files[0] === undefined) return false;
     if (input.files[0].size > 5242880){
       alert("File is too big!");
       input.value = "";
-      return false
+      return false;
     }
 
+    // check resolution
     let img;
     let _URL = window.URL || window.webkitURL;
+
     img = new Image();
     img.src = _URL.createObjectURL(input.files[0]);
     if ((input.files[0])) {
       img.onload = () => {
         if (img.width < 70 || img.height < 70) {
           alert("Photo resolution too low!");
+          this.props.setPhoto('');
           this.setState({
-            selectedFile: '',
             fileName: 'Upload your photo',
             imgSrc: '',
           });
-          return false
+          return false;
         }
-        //this.photoPreview();
+        this.props.setPhoto(input.files[0]);
         this.setState({
-          selectedFile: input.files[0],
           fileName: input.files[0].name,
           imgSrc: img.src,
         });
       };
     }
   };
-
-  // photoPreview = () => {
-  //   let preview = document.getElementById('photo-preview');
-  //   preview.style.backgroundImage = `url('${this.state.imgSrc}')`
-  // };
-
 
   render() {
 
@@ -69,7 +64,7 @@ class FileUpload extends Component {
               onChange={this.fileSelectedHandler}
               accept='.jpg, .jpeg'
           />
-          {this.state.imgSrc ? (<img id='photo-preview' src={this.state.imgSrc}></img>) : null}
+          {this.state.imgSrc ? <img id='photo-preview' src={this.state.imgSrc} alt='preview'></img> : null}
           <button>Upload</button>
         </div>
     );

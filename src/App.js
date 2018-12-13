@@ -76,8 +76,8 @@ class App extends Component {
       <>
         <Users
             users={users}
-            getUsers={this.getUsers}
             positions={positions}
+            getUsers={this.getUsers}
         />
         <Register positions={positions}/>
         <Spinner spin={isSpinning}/>
