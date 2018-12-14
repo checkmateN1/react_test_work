@@ -17,7 +17,7 @@ class Register extends Component {
   state = {
     name: '',
     email: '',
-    phone: '+38(___) ___ __ __',
+    phone: '',
     position_id: '',
     photo: '',
     isReady: false,

@@ -16,6 +16,7 @@ class FileUpload extends Component {
     // check size
     let input = event.target;
 
+    //check max size
     if (input.files[0] === undefined) return false;
     if (input.files[0].size > 5242880){
       alert("File is too big!");
@@ -23,7 +24,7 @@ class FileUpload extends Component {
       return false;
     }
 
-    // check resolution
+    // check min size
     let img;
     let _URL = window.URL || window.webkitURL;
 
@@ -31,8 +32,8 @@ class FileUpload extends Component {
     img.src = _URL.createObjectURL(input.files[0]);
     if ((input.files[0])) {
       img.onload = () => {
-        if (img.width < 70 || img.height < 70) {
-          alert("Photo resolution too low!");
+        if (img.width < 70 || img.height < 70 || input.files[0].size < 2048) {
+          alert("File is too small!");
           this.props.setPhoto('');
           this.setState({
             fileName: 'Upload your photo',
