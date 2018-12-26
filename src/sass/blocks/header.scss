@@ -1,5 +1,5 @@
 .page-header {
-  background-color: $mint-darker;
+  background-color: $white;
   position: fixed;
   font-size: calc(12px + 0.5vmin);
   color: $black;
@@ -43,7 +43,7 @@
 
       li {
         padding: 0 10px;
-        border: 1px solid $grey-border;
+        border: 1px solid $black;
         white-space: nowrap;
         flex-grow: 0;
       }
@@ -55,6 +55,8 @@
       li:nth-last-child(2) {
         margin-left: auto;
         margin-right: 0;
+        display: block;
+        text-align: right;
       }
     }
   }
@@ -83,7 +85,7 @@
         height: 100%;
         top: 0;
         left: -400px;
-        background: $mint-darker;
+        background: $white;
         border: 1px solid hotpink;
         transition: left 0.7s ease 0s;
 

@@ -29,7 +29,14 @@ class Register extends Component {
   setPosition = (position_id) => {this.setState({position_id})};
   setPhoto = (photo) => {this.setState({photo})};
 
+  setFormReadiness = () => {
+      const { name, email, phone, position_id, photo } = this.state;
+      if (name && email && phone && position_id && photo) this.setState({isReady: true})
+  };
+
   render() {
+      const { name, email, phone, position_id, photo } = this.state;
+      const isReady = name && email && phone && position_id && photo;
     return (
       <form className="register-form">
         <div>
@@ -42,7 +49,7 @@ class Register extends Component {
           <FileUpload setPhoto={this.setPhoto} photo={this.state.photo}/>
         </div>
         <div className='register-sign-up'>
-          <button>Sign Up</button>
+          <button className={isReady ? 'ready-sign-up' : ''}>Sign Up</button>
         </div>
       </form>
     )
