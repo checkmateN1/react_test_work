@@ -13,7 +13,7 @@ class User extends Component {
     return (
       <div className='user'>
         <div className='avatar'>
-          <img src={ photo } alt={ name }/>
+          <img src={ photo } alt={ name } width={70} height={70}/>
         </div>
         <div className='data'>
           <h5>{ name }</h5>
@@ -27,11 +27,3 @@ class User extends Component {
 }
 
 export default User;
-
-User.defaultProps = {
-  name: 'James',
-  specialization: 'JavaScript developer',
-  email: 'jamesmask@gmail.com',
-  phone: '+380937777777',
-  img: '#',
-};

@@ -11,5 +11,9 @@ body {
   cursor: default;
   user-select: none;
   min-width: $min-page-width;
+
+  .hidden {
+    display: none !important;
+  }
 }
 

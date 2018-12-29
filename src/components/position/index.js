@@ -5,7 +5,11 @@ import React, { Component } from 'react';
 class Position extends Component {
 
   updatePosition = (e) => {
-    this.props.setPosition(e.target.value);
+    const val = e.target.value;
+
+    this.props.positions.forEach(position => {
+      if (position.name === val) {this.props.setPosition(position.id);}
+    });
   };
 
   render() {

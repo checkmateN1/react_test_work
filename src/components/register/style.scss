@@ -22,11 +22,6 @@
     border-radius: 4px;
     border: 1px solid grey;
 
-    &.alarm {
-      color: $alarm;
-      border-color: $alarm;
-    }
-
     legend {
       font-size: 12px;
       padding: 0 10px;
@@ -42,6 +37,11 @@
     &:nth-child(2) {
       margin: 0 20px;
     }
+  }
+
+  .alarm {
+    border-color: $alarm !important;
+    color: $alarm !important;
   }
 
   select {

@@ -11,16 +11,8 @@ import './style.scss';
 
 class Users extends Component {
 
-  state = {
-    usersCount: 6,
-  };
-
-  showMoreUsers = () => {
-
-  };
-
   render() {
-    const { users } = this.props;
+    const { users, shownUsers, getUsers } = this.props;
 
     const usersList = users.map( user => (
         <User
@@ -29,9 +21,9 @@ class Users extends Component {
             key={user.id}
             email={user.email}
             phone={user.phone}
-            //photo={user.photo}
+            photo={user.photo}
         />
-    )).slice(0, this.state.usersCount);
+    )).slice(0, shownUsers);
 
     return (
         <section className="users">
@@ -41,7 +33,12 @@ class Users extends Component {
               {usersList}
             </FlipMove>
           </div>
-          <button className='show-more-btn' onClick={this.showMoreUsers}>Show more</button>
+          <button
+              className={users.length <= shownUsers ? 'hidden' : ''}
+              onClick={() => getUsers(true)}
+          >
+            Show more
+          </button>
         </section>
     );
   }

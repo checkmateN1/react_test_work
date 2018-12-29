@@ -9,19 +9,30 @@ import Spinner from "./components/spinner";
 // Config
 import { url } from './config/api';
 
-
 class App extends Component {
+  constructor () {
+    super();
+
+    this.getUsers = this.getUsers.bind(this);
+  }
+
   state = {
     token: '',
     users: [],
+    user: {},
+    shownUsers: 0,
     positions: [],
     isSpinning: true,
+    mobWidth: 480,
   };
 
-  async componentDidMount() {
-    this.getUsers(6);
+  componentDidMount() {
+    this.getUsers(true);
+    this.getUserById(1, true);
     this.getPositions();
     this.getToken();
+
+    window.addEventListener("resize", this.updateShownUsers);
   }
 
   async getToken() {
@@ -39,15 +50,39 @@ class App extends Component {
     }
   };
 
-  async getUsers(count) {
+  async getUserById(id, setUser) {
     try {
-      const response = await fetch(url + `users?page=1&count=${count}`);
+      const response = await fetch(url + 'users/' + id);
+
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      const { user } = await response.json();
+
+      this.setState({ user });
+      if (setUser) {
+        document.getElementById('user-name').innerText = user.name;
+        document.getElementById('user-email').innerText = user.email;
+        document.getElementById('user-avatar').setAttribute('src', user.photo);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+  async getUsers(isGetNew) {
+    const { shownUsers, mobWidth } = this.state;
+    let count = !isGetNew ? 0 : (shownUsers === 0 && window.innerWidth <= mobWidth) || (shownUsers === 3 && window.innerWidth > mobWidth) ? 3 : 6;
+
+    try {
+      const response = await fetch(url + `users?page=1&count=${shownUsers + count + 1}`);
 
       if (!response.ok) {
         throw Error(response.statusText);
       }
       const { users } = await response.json();
-      this.setState({ users });
+      this.setState({ users, shownUsers: shownUsers + count });
 
     } catch (error) {
       console.log(error);
@@ -69,17 +104,30 @@ class App extends Component {
     }
   };
 
+  updateShownUsers = () => {
+    const { shownUsers, mobWidth } = this.state;
+    if (window.innerWidth <= mobWidth && shownUsers === 6) {
+      this.setState({shownUsers: 3});
+      return false;
+    }
+    if (window.innerWidth > mobWidth && shownUsers === 3) {this.getUsers(true)}
+  };
+
   render() {
-    const { users, positions, isSpinning } = this.state;
+    const { users, shownUsers, positions, token, isSpinning } = this.state;
 
     return (
       <>
         <Users
-            users={users}
-            positions={positions}
-            getUsers={this.getUsers}
+          users={users}
+          shownUsers={shownUsers}
+          positions={positions}
+          getUsers={this.getUsers}
         />
-        <Register positions={positions}/>
+        <Register
+          token={token}
+          positions={positions}
+        />
         <Spinner spin={isSpinning}/>
       </>
     );

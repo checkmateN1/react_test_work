@@ -1,6 +1,5 @@
 * {
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 body {
   font-family: "Open Sans", "Arial", sans-serif;
@@ -8,8 +7,9 @@ body {
   padding: 0;
   cursor: default;
   user-select: none;
-  min-width: 320px;
-}
+  min-width: 320px; }
+  body .hidden {
+    display: none !important; }
 
 .page-header {
   background-color: #fff;
@@ -19,90 +19,88 @@ body {
   width: 100%;
   margin: 0 auto;
   top: 0;
-  z-index: 5;
-}
-.page-header nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1170px;
-  margin: 0 auto;
-  padding: 0;
-  min-height: 50px;
-}
-.page-header nav .menu-mobile {
-  display: none;
-  position: absolute;
-  right: 10px;
-}
-.page-header nav .logo {
-  align-self: center;
-}
-.page-header nav .visually-hidden {
-  display: flex;
-}
-.page-header nav ul {
-  width: 100%;
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 0;
-  padding: 0 10px;
-  z-index: 10;
-}
-.page-header nav ul li {
-  padding: 0 10px;
-  border: 1px solid #000000;
-  white-space: nowrap;
-  flex-grow: 0;
-}
-.page-header nav ul li:first-child {
-  margin-left: auto;
-}
-.page-header nav ul li:nth-last-child(2) {
-  margin-left: auto;
-  margin-right: 0;
-  display: block;
-  text-align: right;
-}
-@media (max-width: 720px) {
+  z-index: 5; }
   .page-header nav {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-  }
-  .page-header nav .menu-mobile {
-    display: block;
-  }
-  .page-header nav .logo {
-    align-self: flex-start;
-  }
-  .page-header nav ul {
     display: flex;
-    position: fixed;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 200px;
-    max-width: 70vw;
-    height: 100%;
-    top: 0;
-    left: -400px;
-    background: #fff;
-    border: 1px solid hotpink;
-    transition: left 0.7s ease 0s;
-  }
-  .page-header nav ul li {
-    padding: 5px 0;
-  }
-  .page-header nav ul li:first-child {
-    margin-left: 0;
-  }
-  .page-header nav ul li:nth-last-child(2) {
-    margin-left: 0;
-    margin-bottom: 20px;
-    order: -1;
-  }
-}
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0;
+    min-height: 50px; }
+    .page-header nav .menu-mobile {
+      display: none;
+      position: absolute;
+      right: 10px; }
+    .page-header nav .logo {
+      align-self: center; }
+    .page-header nav .visually-hidden {
+      display: flex; }
+    .page-header nav ul {
+      width: 100%;
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 0;
+      padding: 0 10px;
+      z-index: 10; }
+      .page-header nav ul li {
+        padding: 0 10px;
+        white-space: nowrap;
+        flex-grow: 0; }
+      .page-header nav ul li:first-child {
+        margin-left: auto; }
+      .page-header nav ul li:nth-last-child(2) {
+        margin-left: auto;
+        margin-right: 0;
+        text-align: right; }
+      .page-header nav ul .user-header {
+        display: flex;
+        justify-content: space-between; }
+        .page-header nav ul .user-header .user-info div {
+          text-align: right; }
+        .page-header nav ul .user-header > div:last-child {
+          display: flex;
+          align-items: center; }
+        .page-header nav ul .user-header #user-name {
+          font-weight: bold;
+          font-size: 12px; }
+        .page-header nav ul .user-header #user-email {
+          font-size: 12px; }
+        .page-header nav ul .user-header img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%; }
+  @media (max-width: 720px) {
+    .page-header nav {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center; }
+      .page-header nav .menu-mobile {
+        display: block; }
+      .page-header nav .logo {
+        align-self: flex-start; }
+      .page-header nav ul {
+        display: flex;
+        position: fixed;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 200px;
+        max-width: 70vw;
+        height: 100%;
+        top: 0;
+        left: -400px;
+        background: #fff;
+        border: 1px solid hotpink;
+        transition: left 0.7s ease 0s; }
+        .page-header nav ul li {
+          padding: 5px 0; }
+        .page-header nav ul li:first-child {
+          margin-left: 0; }
+        .page-header nav ul li:nth-last-child(2) {
+          margin-left: 0;
+          margin-bottom: 20px;
+          order: -1; } }
 
 /*# sourceMappingURL=index.css.map */

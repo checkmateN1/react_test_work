@@ -43,7 +43,6 @@
 
       li {
         padding: 0 10px;
-        border: 1px solid $black;
         white-space: nowrap;
         flex-grow: 0;
       }
@@ -55,8 +54,36 @@
       li:nth-last-child(2) {
         margin-left: auto;
         margin-right: 0;
-        display: block;
         text-align: right;
+      }
+
+      .user-header {
+        display: flex;
+        justify-content: space-between;
+
+        .user-info div {
+          text-align: right;
+        }
+
+        > div:last-child {
+          display: flex;
+          align-items: center;
+        }
+
+        #user-name {
+          font-weight: bold;
+          font-size: 12px;
+        }
+
+        #user-email {
+          font-size: 12px;
+        }
+
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+        }
       }
     }
   }

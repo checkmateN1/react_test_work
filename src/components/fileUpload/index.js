@@ -15,12 +15,20 @@ class FileUpload extends Component {
   fileSelectedHandler = event => {
     // check size
     let input = event.target;
+    let el = document.getElementById('upload-label');
 
+    // console.log(input.files[0]);
+    // console.log('test small');
     //check max size
     if (input.files[0] === undefined) return false;
     if (input.files[0].size > 5242880){
       alert("File is too big!");
-      input.value = "";
+      input.value = '';
+      el.classList.add('alarm');
+      this.setState({
+        fileName: '',
+        imgSrc: '',
+      });
       return false;
     }
 
@@ -34,9 +42,11 @@ class FileUpload extends Component {
       img.onload = () => {
         if (img.width < 70 || img.height < 70 || input.files[0].size < 2048) {
           alert("File is too small!");
+          input.value = '';
           this.props.setPhoto('');
+          el.classList.add('alarm');
           this.setState({
-            fileName: 'Upload your photo',
+            fileName: '',
             imgSrc: '',
           });
           return false;
@@ -46,6 +56,7 @@ class FileUpload extends Component {
           fileName: input.files[0].name,
           imgSrc: img.src,
         });
+        el.classList.remove('alarm');
       };
     }
   };
@@ -55,8 +66,9 @@ class FileUpload extends Component {
     return (
         <div className='upload-wrapper'>
           <label
-              htmlFor="file-upload"
-              className="custom-file-upload">
+              id='upload-label'
+              htmlFor='file-upload'
+              className='custom-file-upload'>
             {this.state.fileName}
           </label>
           <input
@@ -65,7 +77,7 @@ class FileUpload extends Component {
               onChange={this.fileSelectedHandler}
               accept='.jpg, .jpeg'
           />
-          {this.state.imgSrc ? <img id='photo-preview' src={this.state.imgSrc} alt='preview'></img> : null}
+          {this.state.imgSrc ? <img id='photo-preview' src={this.state.imgSrc} alt='avatar preview'></img> : null}
           <button>Upload</button>
         </div>
     );
