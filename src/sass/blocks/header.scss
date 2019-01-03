@@ -1,11 +1,12 @@
 .page-header {
   background-color: $white;
   position: fixed;
-  font-size: calc(12px + 0.5vmin);
+  font-size: 16px;
   color: $black;
-  width: 100%;
-  margin: 0 auto;
+  height: 64px;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 5;
 
   nav {
@@ -14,8 +15,13 @@
     align-items: center;
     max-width: $max-page-width;
     margin: 0 auto;
-    padding: 0;
-    min-height: 50px;
+    padding: 0 15px;
+    padding-top: 12px;
+
+    .header-logo {
+      padding-right: 15px;
+      padding-top: 3px;
+    }
 
     .menu-mobile {
       display: none;
@@ -38,13 +44,21 @@
       flex-direction: row;
       align-items: center;
       margin: 0;
-      padding: 0 10px;
+      padding: 0;
       z-index: 10;
 
       li {
-        padding: 0 10px;
+        padding: 0 14.5px;
         white-space: nowrap;
         flex-grow: 0;
+
+        > a {
+          padding-top: 1px;
+        }
+      }
+
+      li.header-sign-out {
+        padding-top: 2px;
       }
 
       li:first-child {
@@ -60,7 +74,12 @@
       .user-header {
         display: flex;
         justify-content: space-between;
+        padding-right: 16px;
 
+        .user-info {
+          margin-right: 11px;
+          padding-top: 1px;
+        }
         .user-info div {
           text-align: right;
         }
@@ -70,19 +89,31 @@
           align-items: center;
         }
 
-        #user-name {
-          font-weight: bold;
-          font-size: 12px;
+        #user-name-header {
+          font-size: 14px;
+          padding-top: 1px;
         }
 
-        #user-email {
+        #user-email-header {
           font-size: 12px;
+          padding-right: 2px;
         }
 
         img {
-          width: 30px;
-          height: 30px;
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
+        }
+      }
+
+      .header-sign-out {
+        padding: 0;
+
+        button {
+          display: none;
+        }
+        svg {
+          display: block;
         }
       }
     }
@@ -128,6 +159,13 @@
           margin-left: 0;
           margin-bottom: 20px;
           order: -1;
+        }
+
+        .header-sign-out button {
+          display: block;
+        }
+        .header-sign-out svg {
+          display: none;
         }
       }
     }

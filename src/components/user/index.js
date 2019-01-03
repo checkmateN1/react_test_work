@@ -5,15 +5,25 @@ import React, { Component } from 'react';
 import './style.scss';
 
 
+
 class User extends Component {
+    constructor(props) {
+        super();
+
+        this.backgroundStyle = {
+            'backgroundImage': `url('${props.photo}')`,
+        };
+    }
+
+
 
   render() {
-    const { name, specialization, email, phone, photo } = this.props;
+    const { name, specialization, email, phone } = this.props;
 
     return (
       <div className='user'>
-        <div className='avatar'>
-          <img src={ photo } alt={ name } width={70} height={70}/>
+        <div className='avatar' style={this.backgroundStyle}>
+          {/*<img src={ photo } alt={ name } width={70} height={70}/>*/}
         </div>
         <div className='data'>
           <h5>{ name }</h5>

@@ -57,8 +57,7 @@ class Register extends Component {
     await request.send(formData);
 
     request.onreadystatechange = function() {
-      if (request.readyState == XMLHttpRequest.DONE) {
-        //alert(request.responseText);
+      if (request.readyState === XMLHttpRequest.DONE) {
         // request.responseText {"success":true,"user_id":603,"message":"New user successfully registered"}  // response from server
       }
     }

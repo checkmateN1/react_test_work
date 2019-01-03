@@ -15,7 +15,10 @@
   }
 
   .avatar {
-    width: 30%;
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+    border-radius: 50%;
 
     img {
       border-radius: 50%;
@@ -46,11 +49,6 @@
     justify-content: flex-start;
     align-items: center;
 
-    .avatar {
-      width: 150px;
-      text-align: center;
-    }
-
     .data {
       align-items: center;
       display: flex;
@@ -66,5 +64,10 @@
 @media (max-width: $mobile-width) {
   .user {
     width: 100%;
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+    }
   }
 }

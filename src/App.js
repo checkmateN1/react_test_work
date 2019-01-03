@@ -61,8 +61,8 @@ class App extends Component {
 
       this.setState({ user });
       if (setUser) {
-        document.getElementById('user-name').innerText = user.name;
-        document.getElementById('user-email').innerText = user.email;
+        document.getElementById('user-name-header').innerText = user.name;
+        document.getElementById('user-email-header').innerText = user.email;
         document.getElementById('user-avatar').setAttribute('src', user.photo);
       }
     } catch (error) {
