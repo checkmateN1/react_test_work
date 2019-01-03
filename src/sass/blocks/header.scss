@@ -54,6 +54,7 @@
 
         > a {
           padding-top: 1px;
+          color: $black;
         }
       }
 
@@ -65,16 +66,13 @@
         margin-left: auto;
       }
 
-      li:nth-last-child(2) {
-        margin-left: auto;
-        margin-right: 0;
-        text-align: right;
-      }
-
       .user-header {
         display: flex;
         justify-content: space-between;
         padding-right: 16px;
+        margin-left: auto;
+        margin-right: 0;
+        text-align: right;
 
         .user-info {
           margin-right: 11px;
@@ -97,6 +95,7 @@
         #user-email-header {
           font-size: 12px;
           padding-right: 2px;
+          color: #8d8c8c;
         }
 
         img {
@@ -116,6 +115,13 @@
           display: block;
         }
       }
+    }
+  }
+  @media (max-width: $max-page-width - 100px) {
+    nav ul li:not([class]) {
+      position: relative;
+      top: -2px;
+      left: -3px;
     }
   }
 
