@@ -51,6 +51,7 @@
         padding: 0 14.5px;
         white-space: nowrap;
         flex-grow: 0;
+        box-sizing: border-box;
 
         > a {
           padding-top: 1px;
@@ -95,7 +96,7 @@
         #user-email-header {
           font-size: 12px;
           padding-right: 2px;
-          color: #8d8c8c;
+          color: $grey;
         }
 
         img {
@@ -108,7 +109,7 @@
       .header-sign-out {
         padding: 0;
 
-        button {
+        a {
           display: none;
         }
         svg {
@@ -122,6 +123,13 @@
       position: relative;
       top: -2px;
       left: -3px;
+    }
+  }
+
+  @media (max-width: 890px) {
+    nav ul li:not([class]) {
+      padding: 0;
+      margin: 0 auto;
     }
   }
 
@@ -144,30 +152,57 @@
         position: fixed;
         flex-direction: column;
         align-items: flex-start;
-        width: 200px;
+        width: 260px;
         max-width: 70vw;
         height: 100%;
         top: 0;
         left: -400px;
         background: $white;
-        border: 1px solid hotpink;
         transition: left 0.7s ease 0s;
 
-        li {
-          padding: 5px 0;
-        }
-
-        li:first-child {
-          margin-left: 0;
-        }
-
-        li:nth-last-child(2) {
+        li.user-header {
+          order: -1;
+          flex-direction: column;
+          width: 100%;
+          padding-top: 29px;
           margin-left: 0;
           margin-bottom: 20px;
-          order: -1;
+          border-bottom: 1px solid $grey;
+          padding-bottom: 23px;
+
+          .user-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            #user-name-header {
+              font-size: 20px;
+              margin-bottom: 4px;
+            }
+            #user-email-header {
+              font-size: 13px;
+            }
+          }
+
+          .user-avatar {
+            order: -1;
+            margin-bottom: 12px;
+          }
+
+          img {
+            width: 67px;
+            height: 67px;
+          }
         }
 
-        .header-sign-out button {
+        li, li:not([class]),
+        .header-sign-out {
+          position: initial;
+          margin: 0;
+          padding-left: 24px;
+        }
+
+        .header-sign-out a {
           display: block;
         }
         .header-sign-out svg {
