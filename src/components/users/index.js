@@ -21,7 +21,7 @@ class Users extends Component {
             key={user.id}
             email={user.email}
             phone={user.phone}
-            //photo={user.photo}
+            photo={user.photo}
         />
     )).slice(0, shownUsers);
 

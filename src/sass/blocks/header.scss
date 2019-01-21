@@ -8,6 +8,7 @@
   left: 0;
   right: 0;
   z-index: 5;
+  user-select: none;
 
   nav {
     display: flex;
@@ -15,8 +16,7 @@
     align-items: center;
     max-width: $max-page-width;
     margin: 0 auto;
-    padding: 0 15px;
-    padding-top: 12px;
+    padding: 12px 15px 0 15px;
 
     .header-logo {
       padding-right: 15px;
@@ -53,71 +53,85 @@
         flex-grow: 0;
         box-sizing: border-box;
 
+        &:first-child {
+          margin-left: auto;
+        }
+
+        &.user-header {
+          display: flex;
+          justify-content: space-between;
+          padding-right: 16px;
+          margin-left: auto;
+          margin-right: 0;
+          text-align: right;
+
+          .user-info {
+            margin-right: 11px;
+            padding-top: 1px;
+          }
+          .user-info div {
+            text-align: right;
+          }
+
+          > div:last-child {
+            display: flex;
+            align-items: center;
+          }
+
+          #user-name-header {
+            font-size: 14px;
+            padding-top: 1px;
+          }
+
+          #user-email-header {
+            font-size: 12px;
+            padding-right: 2px;
+            color: $grey;
+          }
+
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+          }
+        }
+
+        &.header-sign-out {
+          padding: 0;
+          padding-top: 2px;
+
+          svg {
+            fill: $secondary;
+            display: block;
+          }
+
+          &:hover svg {
+            fill: $secondary-hover;
+          }
+
+          a {
+            display: none;
+          }
+        }
+
         > a {
           padding-top: 1px;
           color: $black;
         }
       }
+    }
 
-      li.header-sign-out {
-        padding-top: 2px;
-      }
-
-      li:first-child {
-        margin-left: auto;
-      }
-
-      .user-header {
-        display: flex;
-        justify-content: space-between;
-        padding-right: 16px;
-        margin-left: auto;
-        margin-right: 0;
-        text-align: right;
-
-        .user-info {
-          margin-right: 11px;
-          padding-top: 1px;
-        }
-        .user-info div {
-          text-align: right;
-        }
-
-        > div:last-child {
-          display: flex;
-          align-items: center;
-        }
-
-        #user-name-header {
-          font-size: 14px;
-          padding-top: 1px;
-        }
-
-        #user-email-header {
-          font-size: 12px;
-          padding-right: 2px;
-          color: $grey;
-        }
-
-        img {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-        }
-      }
-
-      .header-sign-out {
-        padding: 0;
-
-        a {
-          display: none;
-        }
-        svg {
-          display: block;
-        }
-      }
+    #menu-mobile + label {
+      display: none;
     }
   }
+  @media (max-width: 1344px) {
+    nav {
+      padding: 0 calc(47px - (100% - 1024px) / 10);
+      padding-top: 12px;
+    }
+  }
+
   @media (max-width: $max-page-width - 100px) {
     nav ul li:not([class]) {
       position: relative;
@@ -126,25 +140,52 @@
     }
   }
 
-  @media (max-width: 890px) {
-    nav ul li:not([class]) {
-      padding: 0;
-      margin: 0 auto;
+  @media (max-width: 1024px) {        // down to 768px
+    nav {
+      padding: 0 calc(47px - (1024px - 100%) / 11.13);
+      padding-top: 12px;
+    }
+  }
+
+  @media (max-width: 940px) {
+    nav {
+      ul {
+        li {
+          padding: 0;
+          margin: 0 auto;
+        }
+
+        li.user-header {
+          padding: 0;
+        }
+
+        li:not([class]) {
+          padding: 0;
+          margin: 0 auto;
+        }
+      }
     }
   }
 
   @media (max-width: $tablet-width) {
     nav {
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
+      padding: 0 calc(24px - (768px - 100%) / 49.7778);    // down to 320px
+      padding-top: 12px;
+
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      .header-logo {
+        padding-left: calc(0px + (768px - 100vw) / 224);    // down to 320px  ---- probably bug in .pds ------ +2px right top in mobile version
+
+        svg {
+          height: 34px;
+        }
+      }
 
       .menu-mobile {
         display: block;
-      }
-
-      .logo {
-        align-self: flex-start;
       }
 
       ul {
@@ -152,61 +193,87 @@
         position: fixed;
         flex-direction: column;
         align-items: flex-start;
-        width: 260px;
-        max-width: 70vw;
+        width: calc(259px - (768px - 100vw) / 49.7778);    // down to 320px
         height: 100%;
         top: 0;
         left: -400px;
         background: $white;
         transition: left 0.7s ease 0s;
+        padding-left: calc(24px - (768px - 100vw) / 49.7778);    // down to 320px
 
-        li.user-header {
-          order: -1;
-          flex-direction: column;
-          width: 100%;
-          padding-top: 29px;
-          margin-left: 0;
-          margin-bottom: 20px;
-          border-bottom: 1px solid $grey;
-          padding-bottom: 23px;
+        li {
+          font-size: 16px;
 
-          .user-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-
-            #user-name-header {
-              font-size: 20px;
-              margin-bottom: 4px;
-            }
-            #user-email-header {
-              font-size: 13px;
-            }
-          }
-
-          .user-avatar {
+          &.user-header {
             order: -1;
-            margin-bottom: 12px;
+            flex-direction: column;
+            width: 100%;
+            padding-top: 29px;
+            margin-left: 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid $grey-light;
+            padding-bottom: 23px;
+
+            .user-info {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+
+              #user-name-header {
+                margin-bottom: 4px;
+                font-size: 20px;
+              }
+              #user-email-header {
+                font-size: 13px;
+              }
+            }
+
+            .user-avatar {
+              order: -1;
+              margin-bottom: 12px;
+            }
+
+            img {
+              width: 67px;
+              height: 67px;
+            }
           }
 
-          img {
-            width: 67px;
-            height: 67px;
+          &:not([class]),
+          &.header-sign-out {
+            position: initial;
+            margin: 0;
+          }
+
+          &:not(.user-header) {
+            padding: 11.5px 0;
+          }
+
+          &.header-sign-out {
+            margin-top: 3px;
+
+            a {
+              display: block;
+              padding: 0;
+            }
+
+            svg {
+              display: none;
+            }
           }
         }
+      }
 
-        li, li:not([class]),
-        .header-sign-out {
-          position: initial;
-          margin: 0;
-          padding-left: 24px;
+      #menu-mobile + label {
+        display: block;
+        height: 22px;
+
+        svg {
+          fill: $secondary;
         }
 
-        .header-sign-out a {
-          display: block;
-        }
-        .header-sign-out svg {
-          display: none;
+        &:hover svg {
+          fill: $secondary-hover;
         }
       }
     }
