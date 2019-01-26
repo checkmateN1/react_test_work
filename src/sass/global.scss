@@ -16,8 +16,8 @@
 }
 @font-face {
   font-family: "Overpass-semibold";
-  src: url("fonts/overpass-semibold.woff2") format("woff2"),
-  url('fonts/overpass-semibold.otf') format("opentype");
+  src: url("./fonts/overpass-semibold.woff2") format("woff2"),
+  url('fonts/overpass-semibold.ttf') format("truetype");
   font-weight: 600;
   font-style: normal;
 }
