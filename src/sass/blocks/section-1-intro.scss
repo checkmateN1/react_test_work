@@ -27,7 +27,6 @@
     width: 550px;
 
     h1 {
-      font-family: Overpass-semibold;
       font-size: 50.1px;
       line-height: 60px;
       margin-bottom: 4px;
@@ -45,7 +44,7 @@
       margin-bottom: 33px;
     }
 
-    .button {
+    .button-primary {
       width: 290px;
       height: 40px;
 
@@ -146,6 +145,13 @@
 
 @media (max-width: $mobile-width) {
   .test-assignment-intro {
+
+    .background-wrapper {
+      background-image: url('img/imgs/bg-1-480.jpg');
+      background: -webkit-image-set( url('img/imgs/bg-1-480.jpg') 1x, url('img/imgs/bg-1-960.jpg') 2x );
+      background-position: left calc(-6px - (480px - 100vw) / 2.8) top calc(0px - (480px - 100vw) / 49.73);
+      background-size: calc(468px - (468px - 100vw) / 2.25) auto;
+    }
 
     .content-wrapper {
       width: 100%;

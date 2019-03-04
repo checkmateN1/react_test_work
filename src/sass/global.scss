@@ -34,6 +34,10 @@ body {
   max-width: $max-page-width;
   min-width: $min-page-width;
 
+  h1, h2, h3, h4, h5 {
+    font-family: Overpass-semibold;
+  }
+
   a {
     text-decoration: none;
   }
@@ -56,18 +60,21 @@ body {
   .button {
     text-decoration: none;
     border-radius: 3px;
-    background: $primary;
     transition: 0.3s;
     border: none;
 
-    &:hover { background: $primary-hover; }
+    &-primary {
+      background: $primary;
 
-    span {
-      font-family: SourceSansPro-Bold;
-      font-weight: 700;
-      font-size: 20px;
-      display: inline-block;
-      margin-bottom: 2px;
+      &:hover { background: $primary-hover; }
+
+      span {
+        font-family: SourceSansPro-Bold;
+        font-weight: 700;
+        font-size: 20px;
+        display: inline-block;
+        margin-bottom: 2px;
+      }
     }
   }
 }
